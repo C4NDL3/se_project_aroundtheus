@@ -1,0 +1,134 @@
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  padding: 0 19px;
+  /* display: none; */
+}
+
+/* .modal_opened {
+  display: flex;
+} */
+
+.modal__container {
+  position: relative;
+  padding: 36px;
+  background-color: #fff;
+  width: 430px;
+  height: 330px;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.modal__title {
+  width: 330px;
+  height: 23px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000;
+}
+
+.modal__form {
+  color: #000;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  max-width: 430px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal__input {
+  display: flex;
+  flex-direction: column;
+  margin-top: 54px;
+  margin-bottom: 36px;
+  width: 100%;
+  gap: 36px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 1;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.submit__button {
+  border-radius: 2px;
+  background: black;
+  color: white;
+  width: 358px;
+  height: 50px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  border: none;
+  margin-top: 48px;
+  margin-left: 36px;
+  margin-right: 36px;
+}
+
+.submit__button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.2s ease-in-out;
+}
+
+.modal__close {
+  background-image: url(../images/close-icon.svg);
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+  bottom: calc(100% + 5px);
+  left: calc(100% + 5px);
+}
+
+.modal__close:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 680px) and (min-width: 320px) {
+  .modal__container {
+    width: 282px;
+    padding: 25px 22px;
+    box-sizing: border-box;
+  }
+
+  .modal__close-button {
+    width: 26px;
+    height: 26px;
+    right: 0;
+    top: -40px;
+  }
+
+  .modal__heading {
+    margin: 0 0 75px;
+    font-size: 18px;
+  }
+
+  .modal__input {
+    width: 238px;
+  }
+
+  .modal__save-button {
+    width: 238px;
+    height: 46px;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+}
