@@ -109,14 +109,14 @@
     box-sizing: border-box;
   }
 
-  .modal__close-button {
+  .modal__close {
     width: 26px;
     height: 26px;
     right: 0;
     top: -40px;
   }
 
-  .modal__heading {
+  .modal__title {
     margin: 0 0 75px;
     font-size: 18px;
   }
@@ -125,7 +125,7 @@
     width: 238px;
   }
 
-  .modal__save-button {
+  .submit__button {
     width: 238px;
     height: 46px;
     margin-top: 15px;
