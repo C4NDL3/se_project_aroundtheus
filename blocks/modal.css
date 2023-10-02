@@ -60,7 +60,7 @@
   font-weight: 400;
 }
 
-.submit__button {
+.modal__submit-button {
   border-radius: 2px;
   background: black;
   color: white;
@@ -125,7 +125,7 @@
     width: 238px;
   }
 
-  .submit__button {
+  .modal__submit-button {
     width: 238px;
     height: 46px;
     margin-top: 15px;
