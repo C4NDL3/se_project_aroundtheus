@@ -31,6 +31,7 @@
             <button
               type="button"
               class="profile__edit-button"
+              id="profile-edit-button"
               aria-label
             ></button>
             <p class="profile__description">Explorer</p>
@@ -136,19 +137,21 @@
         <p class="footer__copyright">&copy; 2023 Around The U.S.</p>
       </footer>
     </div>
-    <div class="modal">
+    <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button class="modal__close"></button>
         <p class="modal__title">Edit Profile</p>
         <form class="modal__form">
           <input
             class="modal__input"
+            id="profile-name-input"
             type="text"
             name="name"
             placeholder="Jacques Cousteau"
           />
           <input
             class="modal__input"
+            id="profile-description-input"
             type="text"
             name="description"
             placeholder="Explorer"
