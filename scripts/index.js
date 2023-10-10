@@ -51,9 +51,7 @@ function closePopup() {
   profileEditModal.classList.remove("modal_opened");
 }
 
-profileEditCloseButton.addEventListener("click", () => {
-  closePopup();
-});
+profileEditCloseButton.addEventListener("click", closePopup);
 
 profileEditForm.addEventListener("submit", (e) => {
   e.preventDefault();
