@@ -72,9 +72,6 @@
   line-height: 21px;
   text-align: center;
   border: none;
-  /* margin-top: 48px;
-  margin-left: 36px;
-  margin-right: 36px; */
   margin: 18px 0 9px 0;
 }
 
@@ -113,8 +110,8 @@
   .modal__close {
     width: 26px;
     height: 26px;
-    left: 264px;
-    top: -40px;
+    bottom: calc(100% + 18px);
+    left: calc(100% - 30px);
   }
 
   .modal__title {
