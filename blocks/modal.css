@@ -1,18 +1,24 @@
 .modal {
   position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
+  bottom: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0 19px;
-  display: none;
+  transition: visibility 0s 0.6s, opacity 0.6s;
+  visibility: hidden;
+  display: flex;
+  opacity: 0;
 }
 
 .modal_opened {
-  display: flex;
+  transition: visibility 0s, opacity 0.3s;
+  visibility: visible;
+  opacity: 1;
 }
 
 .modal__container {
@@ -25,7 +31,7 @@
   margin: auto;
 }
 
-.modal__title {
+.modal__heading {
   width: 330px;
   height: 23px;
   font-family: "Inter", Arial, Helvetica, sans-serif;
@@ -60,7 +66,7 @@
   font-weight: 400;
 }
 
-.modal__submit-button {
+.modal__button {
   border-radius: 2px;
   background: black;
   color: white;
@@ -75,7 +81,7 @@
   margin: 18px 0 9px 0;
 }
 
-.modal__submit-button:hover {
+.modal__button:hover {
   cursor: pointer;
   opacity: 0.7;
   transition: 0.2s ease-in-out;
@@ -98,6 +104,27 @@
   cursor: pointer;
   opacity: 0.6;
   transition: 0.2s ease-in-out;
+}
+
+.modal__image-container {
+  width: 433px;
+  height: 540px;
+  margin: auto;
+  position: relative;
+  padding: 0;
+}
+
+.modal__image {
+  width: 433px;
+  height: 540px;
+}
+
+.modal__caption {
+  width: 291px;
+  height: 12px;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
 }
 
 @media screen and (max-width: 680px) and (min-width: 320px) {

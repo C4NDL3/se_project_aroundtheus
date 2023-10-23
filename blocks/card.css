@@ -24,6 +24,7 @@
   width: 282px;
   height: 282px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .card__description {
@@ -45,6 +46,25 @@
 }
 
 .card__like-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.card__trash-icon {
+  position: absolute;
+  background-image: url(../images/Trash.svg);
+  background-color: transparent;
+  width: 18px;
+  height: 19.3px;
+  border: none;
+  right: 20px;
+  top: 20px;
+}
+
+.card__like-button_active {
+  background-image: url(../images/likeButtonActive.svg);
+}
+.card__trash-icon:hover {
   opacity: 0.5;
   cursor: pointer;
 }
