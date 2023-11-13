@@ -65,11 +65,20 @@ const previewImageCloseModal = document.querySelector(
 
 //Functions
 function closePopup(modal) {
-  modal.classList.remove("modal_opened");
+  modal.classList.remove("modal__opened");
+  document.removeEventListener("keydown", keyHandler);
 }
 
 function openPopup(modal) {
-  modal.classList.add("modal_opened");
+  modal.classList.add("modal__opened");
+  document.addEventListener("keydown", keyHandler);
+}
+
+function keyHandler(e) {
+  if (e.key === "Escape") {
+    const modal = document.querySelector(".modal__opened");
+    closePopup(modal);
+  }
 }
 
 // function cardDeleteButton(evt) {
@@ -84,7 +93,7 @@ function getCardElement(cardData) {
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
   });
-  
+
   const cardDeleteButton = cardElement.querySelector(".card__trash-icon");
   cardDeleteButton.addEventListener("click", () => {
     cardElement.remove();
@@ -105,7 +114,6 @@ function getCardElement(cardData) {
 
   return cardElement;
 }
-
 
 //EventListener
 profileEditButton.addEventListener("click", () => {
@@ -144,6 +152,19 @@ addCardForm.addEventListener("submit", (e) => {
   cardsList.prepend(cardElement);
   closePopup(profileAddModal);
   addCardForm.reset();
+});
+
+const popups = document.querySelectorAll(".modal");
+
+popups.forEach((popup) => {
+  popup.addEventListener("mousedown", (e) => {
+    if (e.target.classList.contains("modal__opened")) {
+      closePopup(popup);
+    }
+    if (e.target.classList.contains("modal__close")) {
+      closePopup(popup);
+    }
+  });
 });
 
 //Initialization
