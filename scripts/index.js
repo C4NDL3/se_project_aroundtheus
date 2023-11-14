@@ -65,18 +65,18 @@ const previewImageCloseModal = document.querySelector(
 
 //Functions
 function closePopup(modal) {
-  modal.classList.remove("modal__opened");
+  modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", handleEscape);
 }
 
 function openPopup(modal) {
-  modal.classList.add("modal__opened");
+  modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscape);
 }
 
 function handleEscape(e) {
   if (e.key === "Escape") {
-    const modal = document.querySelector(".modal__opened");
+    const modal = document.querySelector(".modal_opened");
     closePopup(modal);
   }
 }
@@ -158,7 +158,7 @@ const popups = document.querySelectorAll(".modal");
 
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (e) => {
-    if (e.target.classList.contains("modal__opened")) {
+    if (e.target.classList.contains("modal_opened")) {
       closePopup(popup);
     }
     if (e.target.classList.contains("modal__close")) {
