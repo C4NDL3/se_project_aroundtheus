@@ -66,15 +66,15 @@ const previewImageCloseModal = document.querySelector(
 //Functions
 function closePopup(modal) {
   modal.classList.remove("modal__opened");
-  document.removeEventListener("keydown", keyHandler);
+  document.removeEventListener("keydown", handleEscape);
 }
 
 function openPopup(modal) {
   modal.classList.add("modal__opened");
-  document.addEventListener("keydown", keyHandler);
+  document.addEventListener("keydown", handleEscape);
 }
 
-function keyHandler(e) {
+function handleEscape(e) {
   if (e.key === "Escape") {
     const modal = document.querySelector(".modal__opened");
     closePopup(modal);
@@ -126,17 +126,17 @@ profileAddButton.addEventListener("click", () => {
   openPopup(profileAddModal);
 });
 
-profileEditCloseButton.addEventListener("click", () => {
-  closePopup(profileEditModal);
-});
+// profileEditCloseButton.addEventListener("click", () => {
+//   closePopup(profileEditModal);
+// });
 
-addCardCloseButton.addEventListener("click", () => {
-  closePopup(profileAddModal);
-});
+// addCardCloseButton.addEventListener("click", () => {
+//   closePopup(profileAddModal);
+// });
 
-previewImageCloseModal.addEventListener("click", () => {
-  closePopup(previewCardModal);
-});
+// previewImageCloseModal.addEventListener("click", () => {
+//   closePopup(previewCardModal);
+// });
 
 profileEditForm.addEventListener("submit", (e) => {
   e.preventDefault();
