@@ -87,7 +87,7 @@
   transition: 0.2s ease-in-out;
 }
 
-.modal__button_disabled:hover {
+.modal__button_disabled {
   /* border-radius: 2px;
   border: 1px solid #000;
   background: #f6f6f6; */

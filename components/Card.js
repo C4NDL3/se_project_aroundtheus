@@ -37,15 +37,23 @@ export default class Card {
       .classList.toggle("card__like-button_active");
   }
 
-  getView() {
-    this._cardElement = document
+  _getElement() {
+    return document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
       .cloneNode(true);
+  }
 
-    this._cardElement.querySelector(".card__title").textContent = this._name;
-    this._cardElement.querySelector(".card__image").src = this._link;
-    this._cardElement.querySelector(".card__image").alt = this._name;
+  getView() {
+    this._cardElement = this._getElement();
+    this._cardTitleEl = this._cardElement.querySelector(".card__title");
+    // this._cardElement.querySelector(".card__image").src = this._link;
+    // this._cardElement.querySelector(".card__image").alt = this._name;
+    this._cardImageEl = this._cardElement.querySelector(".card__image");
+
+    this._cardImageEl.src = this._link;
+    this._cardImageEl.alt = this._name;
+    this._cardTitleEl.textContent = this._name;
 
     this._setEventListeners();
 

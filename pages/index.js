@@ -33,10 +33,6 @@ const initialCards = [
   },
 ];
 
-const cardData = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
 // const card = new Card(cardData, "#card-template");
 // Importing Cards
 
@@ -129,38 +125,49 @@ function handleAddCardSubmit(e) {
   const link = cardURLInput.value;
   renderCard({ name, link }, cardList);
   e.target.reset();
-  closePopup();
+  closePopup(addCardModal);
+}
+
+// function renderCard(cardData, wrapper) {
+//   const cardElement = getCardElement(cardData);
+//   wrapper.prepend(cardElement);
+// }
+
+function createCard(cardData, cardSelector, handleImageClick) {
+  const cardEl = new Card(cardData, cardSelector, handleImageClick);
+  return cardEl.getView();
 }
 
 function renderCard(cardData, wrapper) {
-  const cardElement = getCardElement(cardData);
-  wrapper.prepend(cardElement);
+  const card = createCard(cardData, "#card-template", handleImageClick);
+  wrapper.prepend(card);
 }
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const deleteButton = cardElement.querySelector(".card__trash-icon");
 
-  cardImageEl.addEventListener("click", () => {
-    modalImageEl.src = cardData.link;
-    modalImageEl.alt = cardData.name;
-    modalCaptionEl.textContent = cardData.name;
-    openPopup(previewImageModal);
-  });
+// function getCardElement(cardData) {
+//   const cardElement = cardTemplate.cloneNode(true);
+//   const cardImageEl = cardElement.querySelector(".card__image");
+//   const cardTitleEl = cardElement.querySelector(".card__title");
+//   const likeButton = cardElement.querySelector(".card__like-button");
+//   const deleteButton = cardElement.querySelector(".card__trash-icon");
 
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
-  cardTitleEl.textContent = cardData.name;
-  return cardElement;
-}
+//   cardImageEl.addEventListener("click", () => {
+//     modalImageEl.src = cardData.link;
+//     modalImageEl.alt = cardData.name;
+//     modalCaptionEl.textContent = cardData.name;
+//     openPopup(previewImageModal);
+//   });
+
+//   likeButton.addEventListener("click", () => {
+//     likeButton.classList.toggle("card__like-button_active");
+//   });
+//   deleteButton.addEventListener("click", () => {
+//     cardElement.remove();
+//   });
+//   cardImageEl.src = cardData.link;
+//   cardImageEl.alt = cardData.name;
+//   cardTitleEl.textContent = cardData.name;
+//   return cardElement;
+// }
 
 // Event Listeners
 profileEditButton.addEventListener("click", () => {
@@ -203,14 +210,14 @@ addCardForm.addEventListener("submit", handleAddCardSubmit);
 //   addCardForm.reset(".modal__button_disabled");
 // });
 
-const modals = [...document.querySelectorAll("modal")];
-modals.forEach((modal) => {
-  modal.addEventListener("mousedown", (e) => {
-    if (e.target === e.currentTarget) {
-      closePopup(e.currentTarget);
-    }
-  });
-});
+// const modals = [...document.querySelectorAll("modal")];
+// modals.forEach((modal) => {
+//   modal.addEventListener("mousedown", (e) => {
+//     if (e.target === e.currentTarget) {
+//       closePopup(e.currentTarget);
+//     }
+//   });
+// });
 
 profileEditModal.addEventListener("click", (e) =>
   closeOverlayClicked(profileEditModal, e)
