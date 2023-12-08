@@ -64,8 +64,10 @@ const profileEditCloseButton = document.querySelector(
 );
 
 const addCardCloseButton = document.querySelector("#add-card-close-button");
-const cardTitleInput = addCardForm.querySelector(".modal");
-const cardURLInput = addCardForm.querySelector(".modal__input");
+// const cardTitleInput = addCardForm.querySelector(".modal");
+const cardURLInput = addCardForm.querySelector(
+  "#profile-add-description-input"
+);
 const previewImageCloseModal = document.querySelector(
   "#preview-card-image-close-button"
 );
@@ -126,12 +128,8 @@ function handleAddCardSubmit(e) {
   renderCard({ name, link }, cardList);
   e.target.reset();
   closePopup(addCardModal);
+  toggleButtonState();
 }
-
-// function renderCard(cardData, wrapper) {
-//   const cardElement = getCardElement(cardData);
-//   wrapper.prepend(cardElement);
-// }
 
 function createCard(cardData, cardSelector, handleImageClick) {
   const cardEl = new Card(cardData, cardSelector, handleImageClick);
