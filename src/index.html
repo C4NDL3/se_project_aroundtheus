@@ -6,7 +6,6 @@
     <meta name="description" content="Around the U.S" />
     <meta name="author" content="Abigail Rodriguez C." />
     <meta name="keywords" content="Places, U.S, Mountains, Lakes" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <title>Around The U.S</title>
   </head>
@@ -14,7 +13,7 @@
     <div class="page__content">
       <header class="header page__section">
         <img
-          src="./images/AroundTheUS-logo.svg"
+          src="<%=require('./images/AroundTheUS-logo.svg')%>"
           alt="Around the U.S. Logo"
           class="header__logo"
         />
@@ -22,7 +21,7 @@
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/profile-picture.png"
+            src="<%=require('./images/profile-picture.png')%>"
             alt="Jacques Cousteau's Picture"
             class="profile__image"
           />
@@ -154,6 +153,6 @@
         ></button>
       </li>
     </template>
-    <script src="./pages/index.js" type="module"></script>
+    <!-- <script src="./pages/index.js" type="module"></script> -->
   </body>
 </html>
