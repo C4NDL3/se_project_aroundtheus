@@ -1,7 +1,7 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import "./index.css";
-import Popup from "../components/Popup.js";
+// import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
@@ -32,20 +32,21 @@ const section = new Section(
 );
 section.renderItems();
 
-const cardFormValidator = new FormValidator(config, previewCardModal);
-cardFormValidator.enableValidation();
 // ADD CARD
-const addCardPopup = new PopupWithForm(addCardModal, handleAddImageSubmit);
+const addCardPopup = new PopupWithForm(
+  "#profile-add-modal",
+  handleAddImageSubmit
+);
 addCardPopup.setEventListeners();
 const addCardFormValidator = new FormValidator(config, addCardForm);
 addCardFormValidator.enableValidation();
 profileAddButton.addEventListener("click", () => {
-  newCardPopup.open();
+  addCardPopup.open();
 });
 
 // Profile Edit
 const profileEditPopup = new PopupWithForm(
-  profileEditModal,
+  "#profile-edit-modal",
   handleProfileEditSubmit
 );
 const editFormValidator = new FormValidator(config, profileEditForm);
@@ -63,11 +64,6 @@ profileEditPopup.setEventListeners();
 // User Info
 const userInfo = new UserInfo(".profile__title", ".profile__description");
 
-// Functions
-function handleImageClick({ name, link }) {
-  popupWithImage.open(name, link);
-}
-
 // Preview Card
 const popupWithImage = new PopupWithImage("#preview-card-modal");
 popupWithImage.setEventListeners();
@@ -78,6 +74,10 @@ popupWithImage.setEventListeners();
 //   popupWithImage.open(link, name);
 // }
 
+// Function to handle click event
+function handleImageClick({ name, link }) {
+  popupWithImage.open(name, link);
+}
 // document.querySelector(".profile__add-button").addEventListener("click", () => {
 //   cardFormValidator.toggleButtonState();
 //   addCardPopup.open();
