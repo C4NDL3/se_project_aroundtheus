@@ -96,10 +96,12 @@ function createCard(cardData) {
 function handleProfileEditSubmit(formData) {
   userInfo.setUserInfo(formData.name, formData.description);
   profileEditPopup.close();
+  editFormValidator.toggleButtonState();
 }
 
 function handleAddImageSubmit(formData) {
-  const card = createCard({ name: formData.name, link: formData.link });
+  const card = createCard({ name: formData.name, link: formData.url });
   section.addItem(card);
   addCardPopup.close();
+  addCardFormValidator.toggleButtonState();
 }
