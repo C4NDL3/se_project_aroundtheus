@@ -5,11 +5,11 @@ export default class UserInfor {
   }
 
   getUserInfo() {
-    const UserInfo = {
+    const userInfo = {
       name: this._nameElement.textContent,
       description: this._descriptionElement.textContent,
     };
-    return UserInfo;
+    return userInfo;
   }
 
   setUserInfo(name, description) {
