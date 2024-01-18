@@ -56,10 +56,10 @@ const editFormValidator = new FormValidator(config, profileEditForm);
 editFormValidator.enableValidation();
 
 profileEditButton.addEventListener("click", () => {
+  editFormValidator.resetValidation();
   const { name, description } = userInfo.getUserInfo();
   profileTitleInput.value = name;
   profileDescriptionInput.value = description;
-  editFormValidator.resetValidation();
   profileEditPopup.open();
 });
 
@@ -97,11 +97,9 @@ function createCard(cardData) {
 
 function handleProfileEditSubmit(formData) {
   userInfo.setUserInfo(formData.name, formData.description);
-  editFormValidator.toggleButtonState();
 }
 
 function handleAddImageSubmit(formData) {
   const card = createCard({ name: formData.name, link: formData.url });
   section.addItem(card);
-  addCardFormValidator.toggleButtonState();
 }
