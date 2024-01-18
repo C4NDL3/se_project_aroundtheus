@@ -43,6 +43,7 @@ addCardPopup.setEventListeners();
 const addCardFormValidator = new FormValidator(config, addCardForm);
 addCardFormValidator.enableValidation();
 profileAddButton.addEventListener("click", () => {
+  addCardFormValidator.resetValidation();
   addCardPopup.open();
 });
 
@@ -58,6 +59,7 @@ profileEditButton.addEventListener("click", () => {
   const { name, description } = userInfo.getUserInfo();
   profileTitleInput.value = name;
   profileDescriptionInput.value = description;
+  editFormValidator.resetValidation();
   profileEditPopup.open();
 });
 
