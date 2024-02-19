@@ -19,6 +19,14 @@ export default class Api {
     }).then(this.renderResult);
   }
 
+  addCard(formData) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify(formData),
+    }).then(this.renderResult);
+  }
+
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
@@ -40,6 +48,6 @@ export default class Api {
     return fetch(`${this._baseUrl}/cards/${card}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this._renderResult);
+    }).then(this.renderResult);
   }
 }

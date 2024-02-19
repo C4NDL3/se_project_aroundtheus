@@ -24,6 +24,7 @@ import {
   profileAvatarForm,
 } from "../utils/constants.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
+import { data } from "autoprefixer";
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
@@ -107,7 +108,7 @@ popupWithImage.addEventListeners();
 // }
 
 // Delete Card
-const cardDeletePopup = new PopupWithConfirmation("#delete-card-modal");
+// const cardDeletePopup = new PopupWithConfirmation("#delete-card-modal");
 
 // Function to handle click event
 function handleImageClick({ name, link }) {
@@ -131,15 +132,32 @@ function createCard(cardData) {
 
 function handleProfileEditSubmit(formData) {
   profileEditPopup.setLoading(true);
-  api.profileUpdate(formData).then((userData) => {
+  api.getUserInfo(formData).then((formData) => {
     userInfo.setUserInfo(formData.name, formData.description);
   });
   profileEditPopup.close();
 }
 
+// function handleAddImageSubmit(formData) {
+//   const card = createCard({ name: formData.name, link: formData.url });
+//   section.addItem(card);
+// }
+
 function handleAddImageSubmit(formData) {
-  const card = createCard({ name: formData.name, link: formData.url });
-  section.addItem(card);
+  addCardPopup.setLoading(true);
+  api
+    .addCard(formData)
+    .then((cardData) => {
+      const card = createCard(cardData);
+      section.addItem(card);
+      addCardPopup.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      addCardPopup.setLoading(false);
+    });
 }
 
 function handleAvatarSubmit(url) {
@@ -176,3 +194,4 @@ function handleAvatarSubmit(url) {
 //       });
 //   });
 // }
+
