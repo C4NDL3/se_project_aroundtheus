@@ -19,11 +19,11 @@ export default class Api {
     }).then(this.renderResult);
   }
 
-  addCard(formData) {
-    return fetch(`${this._baseUrl}/cards`, {
+  addCard(name, url) {
+    return fetch(`${this._baseUrl}/v1/cards`, {
       method: "POST",
       headers: this._headers,
-      body: JSON.stringify(formData),
+      body: JSON.stringify({ name, url }),
     }).then(this.renderResult);
   }
 

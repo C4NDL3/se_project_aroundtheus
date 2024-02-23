@@ -26,6 +26,6 @@ export default class PopupWithConfirmation extends Popup {
       e.preventDefault();
       this._handleFormSubmit();
     });
-    super.setEventListeners();
+    super.addEventListeners();
   }
 }
