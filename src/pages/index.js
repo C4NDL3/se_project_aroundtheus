@@ -96,8 +96,6 @@ const profileAvatarPopup = new PopupWithForm(
 );
 
 profileAvatarButton.addEventListener("click", () => {
-  avatarFormValidator.resetValidation();
-
   profileAvatarPopup.open();
 });
 profileAvatarPopup.setEventListeners();
@@ -129,16 +127,24 @@ function createCard(cardData) {
 
 function handleProfileEditSubmit(formData) {
   profileEditPopup.setLoading(true);
-  api.getUserInfo(formData).then((formData) => {
-    userInfo.setUserInfo(formData.name, formData.description);
-  });
+  api
+    .getUserInfo(formData)
+    .then((formData) => {
+      userInfo.setUserInfo(formData.name, formData.description);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      profileEditPopup.setLoading(false);
+    });
   profileEditPopup.close();
 }
 
-function handleAddImageSubmit(formData) {
+function handleAddImageSubmit(name, link) {
   addCardPopup.setLoading(true);
   api
-    .addCard(formData)
+    .addCard(name, link)
     .then((cardData) => {
       const card = createCard(cardData);
       section.addItem(card);
@@ -186,3 +192,4 @@ function handleAvatarSubmit(url) {
 //       });
 //   });
 // }
+

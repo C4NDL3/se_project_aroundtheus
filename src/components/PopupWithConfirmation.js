@@ -2,11 +2,11 @@ import Popup from "./Popup";
 
 export default class PopupWithConfirmation extends Popup {
   constructor(popupSelector) {
-    super(popupSelector);
+    super({ popupSelector });
     this._popupForm = this._popupElement.querySelector(".modal__form");
     this._submitButton = this._popupForm.querySelector(".modal__button");
-    this._submitButtonText =
-      this._submitButton.querySelector("#delete-card-modal");
+    // this._submitButtonText =
+    //   this._submitButton.querySelector("#delete-card-modal");
   }
 
   setSubmitAction(action) {

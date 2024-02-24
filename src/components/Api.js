@@ -19,11 +19,11 @@ export default class Api {
     }).then(this.renderResult);
   }
 
-  addCard(name, url) {
-    return fetch(`${this._baseUrl}/v1/cards`, {
+  addCard({ name, url }) {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
-      body: JSON.stringify({ name, url }),
+      body: JSON.stringify({ name, link: url }),
     }).then(this.renderResult);
   }
 
@@ -33,7 +33,7 @@ export default class Api {
       headers: this._headers,
     }).then(this.renderResult);
   }
-
+// updateUserInfo()
   updateAvatar(url) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
