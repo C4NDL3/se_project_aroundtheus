@@ -38,15 +38,34 @@ const api = new Api({
 
 const section = new Section(
   {
-    items: initialCards,
     renderer: (cardData) => {
       const sectionCard = createCard(cardData);
       section.addItem(sectionCard);
     },
   },
-  ".cards__list "
+  ".cards__list ",
+  new Api({
+    baseUrl: "https://around-api.en.tripleten-services.com/v1",
+    headers: {
+      authorization: "7de0cfd0-91fd-49fd-9d21-140e9d9b5161",
+      "Content-Type": "application/json",
+    },
+  })
 );
+
 section.renderItems();
+// function fetchAndRenderInitialCards() {
+//   api
+//     .getInitialCards()
+//     .then((initialCards) => {
+//       initialCards.forEach((cardData) => {
+//         section._renderer(cardData);
+//       });
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching initial cards", error);
+//     });
+// }
 // User Info
 const userInfo = new UserInfo(
   ".profile__title",
@@ -137,14 +156,14 @@ function handleProfileEditSubmit(formData) {
     })
     .finally(() => {
       profileEditPopup.setLoading(false);
+      profileEditPopup.close();
     });
-  profileEditPopup.close();
 }
 
-function handleAddImageSubmit(name, link) {
+function handleAddImageSubmit(name, url) {
   addCardPopup.setLoading(true);
   api
-    .addCard(name, link)
+    .addCard(name, url)
     .then((cardData) => {
       const card = createCard(cardData);
       section.addItem(card);
@@ -192,4 +211,3 @@ function handleAvatarSubmit(url) {
 //       });
 //   });
 // }
-

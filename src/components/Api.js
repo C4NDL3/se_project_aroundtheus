@@ -4,6 +4,10 @@ export default class Api {
     this._headers = headers;
   }
 
+  getUserInfoAndCards() {
+    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
+  }
+
   renderResult(res) {
     if (res.ok) {
       return res.json();
@@ -33,7 +37,15 @@ export default class Api {
       headers: this._headers,
     }).then(this.renderResult);
   }
-// updateUserInfo()
+
+  updateUserInfo({ title, description }) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({ name: title, about: description }),
+    });
+  }
+
   updateAvatar(url) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
