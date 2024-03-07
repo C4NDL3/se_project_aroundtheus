@@ -36,24 +36,28 @@ const api = new Api({
   },
 });
 
-const section = new Section(
-  {
-    renderer: (cardData) => {
-      const sectionCard = createCard(cardData);
-      section.addItem(sectionCard);
-    },
-  },
-  ".cards__list ",
-  new Api({
-    baseUrl: "https://around-api.en.tripleten-services.com/v1",
-    headers: {
-      authorization: "7de0cfd0-91fd-49fd-9d21-140e9d9b5161",
-      "Content-Type": "application/json",
-    },
-  })
-);
+let section;
 
-section.renderItems();
+api
+  .getInitialCards()
+  .then((cards) => {
+    const section = new Section(
+      {
+        items: cards,
+        renderer: (cardData) => {
+          const sectionCard = createCard(cardData);
+          section.addItem(sectionCard);
+        },
+      },
+      ".cards__list "
+    );
+
+    section.renderItems();
+  })
+  .catch((error) => {
+    console.error("Error fetching initial cards", error);
+  });
+
 // function fetchAndRenderInitialCards() {
 //   api
 //     .getInitialCards()
