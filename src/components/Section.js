@@ -16,16 +16,3 @@ export default class Section {
   }
 }
 
-// export default class Section {
-//   constructor({ renderer }, containerSelector, api) {
-//     this._renderer = renderer;
-//     this._container = document.querySelector(containerSelector);
-//     this._api = api;
-//   }
-
-//   renderItems() {}
-
-//   addItem(element) {
-//     this._container.prepend(element);
-//   }
-// }
