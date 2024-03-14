@@ -58,6 +58,18 @@ api
     console.error("Error fetching initial cards", error);
   });
 
+api
+  .getUserInfo()
+  .then((userData) => {
+    userInfo.setUserInfo({
+      name: userData.name,
+      about: userData.description,
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
 // User Info
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
@@ -191,7 +203,8 @@ profileAddButton.addEventListener("click", () => {
   addCardFormValidator.resetValidation();
   addCardPopup.open();
 });
-// profileAddButton.setEventListeners();
+
+addCardPopup.setEventListeners();
 
 // cardDeleteButton.addEventListener("click", () => {
 //   cardDeletePopup.open();
