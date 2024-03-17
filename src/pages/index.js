@@ -63,7 +63,7 @@ api
   .then((userData) => {
     userInfo.setUserInfo({
       name: userData.name,
-      about: userData.description,
+      description: userData.about,
     });
   })
   .catch((err) => {
