@@ -170,8 +170,8 @@ addCardFormValidator.enableValidation();
 
 const profileAvatarPopup = new PopupWithForm(
   "#profile-avatar-modal",
-  profileAvatarButton,
-  handleAvatarSubmit
+  handleAvatarSubmit,
+  profileAvatarButton
 );
 
 profileAvatarButton.addEventListener("click", () => {
