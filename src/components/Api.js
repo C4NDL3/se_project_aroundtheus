@@ -46,11 +46,11 @@ export default class Api {
     });
   }
 
-  updateAvatar(avatar) {
+  updateAvatar(url) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify(avatar),
+      body: JSON.stringify({ avatar: url }),
     }).then(this.renderResult);
   }
 

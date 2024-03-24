@@ -64,6 +64,7 @@ api
     userInfo.setUserInfo({
       name: userData.name,
       description: userData.about,
+      avatar: userData.avatar,
     });
   })
   .catch((err) => {
@@ -136,24 +137,24 @@ function handleAvatarSubmit(url) {
     });
 }
 
-// function handleDeleteCard(cardId) {
-//   cardDeletePopup.open();
-//   cardDeletePopup.setSubmitAction(() => {
-//     cardDeletePopup.setLoading(true, "Deleting...");
-//     api
-//       .deletecard(cardId._id)
-//       .then(() => {
-//         cardDeletePopup.close();
-//         cardId.removeCard();
-//       })
-//       .catch((err) => {
-//         console.error(err);
-//       })
-//       .finally(() => {
-//         cardDeletePopup.setLoading(false, "Yes");
-//       });
-//   });
-// }
+function handleDeleteCard(card) {
+  cardDeletePopup.open();
+  cardDeletePopup.setSubmitAction(() => {
+    cardDeletePopup.setLoading(true, "Deleting...");
+    api
+      .deletecard(card)
+      .then(() => {
+        cardDeletePopup.close();
+        card.removeCard();
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        cardDeletePopup.setLoading(false, "Yes");
+      });
+  });
+}
 
 // Form Validator
 
@@ -206,17 +207,18 @@ profileAddButton.addEventListener("click", () => {
 
 addCardPopup.setEventListeners();
 
-// cardDeleteButton.addEventListener("click", () => {
-//   cardDeletePopup.open();
-// });
-
 // Preview Card
 const popupWithImage = new PopupWithImage("#preview-card-modal");
 popupWithImage.addEventListeners();
 
 // Delete Card
-// const cardDeleteFormValidator = new FormValidator(config, cardDeleteForm);
-// cardDeleteFormValidator.enableValidation();
 
-const cardDeletePopup = new PopupWithConfirmation("#delete-card-modal");
+const cardDeletePopup = new PopupWithConfirmation(
+  "#delete-card-modal",
+  handleDeleteCard
+);
 cardDeletePopup.setEventListeners();
+
+// cardDeleteButton.addEventListener("click", () => {
+//   cardDeletePopup.open();
+// });
