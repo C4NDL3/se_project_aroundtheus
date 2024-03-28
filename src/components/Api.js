@@ -46,7 +46,7 @@ export default class Api {
     });
   }
 
-  updateAvatar(url) {
+  updateAvatar({ url }) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
@@ -54,8 +54,8 @@ export default class Api {
     }).then(this.renderResult);
   }
 
-  deletecard(card) {
-    return fetch(`${this._baseUrl}/cards/${card}`, {
+  deletecard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
     }).then(this.renderResult);

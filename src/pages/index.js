@@ -64,7 +64,7 @@ api
     userInfo.setUserInfo({
       name: userData.name,
       description: userData.about,
-      avatar: userData.avatar,
+      avatar: userData.url,
     });
   })
   .catch((err) => {
@@ -75,7 +75,7 @@ api
 const userInfo = new UserInfo({
   nameSelector: ".profile__title",
   descriptionSelector: ".profile__description",
-  avatarSelector: ".profile__image",
+  avatarSelector: "#avatar-picture-input",
 });
 
 // Function to handle click event
@@ -125,8 +125,8 @@ function handleAvatarSubmit(url) {
   profileAvatarPopup.setLoading(true);
   api
     .updateAvatar(url)
-    .then((data) => {
-      userInfo.setAvatar(data.avatar);
+    .then(() => {
+      userInfo.setAvatar(url);
       profileAvatarPopup.close();
     })
     .catch((err) => {
@@ -142,7 +142,7 @@ function handleDeleteCard(card) {
   cardDeletePopup.setSubmitAction(() => {
     cardDeletePopup.setLoading(true, "Deleting...");
     api
-      .deletecard(card)
+      .deletecard(card.getId())
       .then(() => {
         cardDeletePopup.close();
         card.removeCard();
