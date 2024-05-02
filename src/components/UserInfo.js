@@ -19,7 +19,7 @@ export default class UserInfo {
   updateAvatar() {
     return this._avatarElement;
   }
-  setAvatar(avatar) {
+  setAvatar({ avatar }) {
     this._avatarElement.src = avatar;
   }
 }

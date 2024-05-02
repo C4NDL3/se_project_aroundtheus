@@ -64,7 +64,7 @@ api
     userInfo.setUserInfo({
       name: userData.name,
       description: userData.about,
-      // avatar: userData.url,
+      avatar: userData.avatar,
     });
   })
   .catch((err) => {
