@@ -142,15 +142,15 @@ function handleAvatarSubmit(url) {
     });
 }
 
-function handleDeleteCard(card) {
+function handleDeleteCard(cardId) {
   cardDeletePopup.open();
   cardDeletePopup.setSubmitAction(() => {
     cardDeletePopup.setLoading(true, "Deleting...");
     api
-      .deletecard(card)
+      .deleteCard(cardId)
       .then(() => {
+        this.handleDeleteCard();
         cardDeletePopup.close();
-        card.removeCard();
       })
       .catch((err) => {
         console.error(err);
