@@ -60,4 +60,18 @@ export default class Api {
       headers: this._headers,
     }).then(this.renderResult);
   }
+
+  likeCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    }).then(this.renderResult);
+  }
+
+  dislikeCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this.renderResult);
+  }
 }

@@ -88,7 +88,8 @@ function createCard(cardData) {
     cardData,
     "#card-template",
     handleImageClick,
-    handleDeleteCard
+    handleDeleteCard,
+    handleLike
   );
   return card.getView();
 }
@@ -161,6 +162,31 @@ function handleDeleteCard(cardId) {
   });
 }
 
+function handleLike(cardId) {
+  if (cardId.isLiked) {
+    api
+      .dislikeCard(cardId._id)
+      .then(() => {
+        cardId.handleLikeIcon();
+        cardId.isLiked = false;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+  if (!cardId.isLiked) {
+    api
+      .likeCard(cardId._id)
+      .then(() => {
+        cardId.handleLikeIcon();
+        cardId.isLiked = true;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+}
+
 // Form Validator
 
 const avatarFormValidator = new FormValidator(config, profileAvatarForm);
@@ -218,10 +244,7 @@ popupWithImage.addEventListeners();
 
 // Delete Card
 
-const cardDeletePopup = new PopupWithConfirmation(
-  "#delete-card-modal",
-  handleDeleteCard
-);
+const cardDeletePopup = new PopupWithConfirmation("#delete-card-modal");
 cardDeletePopup.setEventListeners();
 
 // cardDeleteButton.addEventListener("click", () => {
