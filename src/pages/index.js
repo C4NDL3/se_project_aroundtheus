@@ -163,30 +163,29 @@ function handleDeleteCard(cardId) {
 }
 
 function handleLike(cardId) {
-  if (cardId.isLiked) {
+  if (cardId._isLiked) {
     api
       .dislikeCard(cardId._id)
       .then(() => {
         cardId.handleLikeIcon();
-        cardId.isLiked = false;
+        cardId._isLiked = false;
       })
       .catch((err) => {
         console.error(err);
       });
   }
-  if (!cardId.isLiked) {
+  if (!cardId._isLiked) {
     api
       .likeCard(cardId._id)
       .then(() => {
         cardId.handleLikeIcon();
-        cardId.isLiked = true;
+        cardId._isLiked = true;
       })
       .catch((err) => {
         console.error(err);
       });
   }
 }
-
 // Form Validator
 
 const avatarFormValidator = new FormValidator(config, profileAvatarForm);
