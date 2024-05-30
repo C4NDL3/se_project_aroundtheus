@@ -62,6 +62,7 @@ export default class Card {
     this._deleteButton = this._cardElement.querySelector(".card__trash-icon");
 
     this._setEventListeners();
+    this._renderLikes(); 
 
     return this._cardElement;
   }
@@ -79,5 +80,3 @@ export default class Card {
     }
   }
 }
-
-
