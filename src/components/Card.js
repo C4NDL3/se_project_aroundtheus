@@ -11,7 +11,7 @@ export default class Card {
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteCard = handleDeleteCard;
-    this._id = cardData._id;
+    this.id = cardData._id;
     this._isLiked = cardData.isLiked;
     this._handleLike = handleLike;
   }
@@ -21,7 +21,7 @@ export default class Card {
     });
 
     this._deleteButton.addEventListener("click", () => {
-      this._handleDeleteCard(this._id);
+      this._handleDeleteCard(this);
     });
 
     this._cardImageEl.addEventListener("click", () => {

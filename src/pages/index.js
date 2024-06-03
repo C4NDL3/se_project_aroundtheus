@@ -100,13 +100,13 @@ function handleProfileEditSubmit({ name, description }) {
     .updateUserInfo(name, description)
     .then(() => {
       userInfo.setUserInfo({ name: name, description: description });
+      profileEditPopup.close();
     })
     .catch((err) => {
       console.error(err);
     })
     .finally(() => {
       profileEditPopup.setLoading(false);
-      profileEditPopup.close();
     });
 }
 
@@ -143,14 +143,14 @@ function handleAvatarSubmit(url) {
     });
 }
 
-function handleDeleteCard(cardId) {
+function handleDeleteCard(card) {
   cardDeletePopup.open();
   cardDeletePopup.setSubmitAction(() => {
     cardDeletePopup.setLoading(true, "Deleting...");
     api
-      .deleteCard(cardId)
+      .deleteCard(card.id)
       .then(() => {
-        this.handleDeleteCard();
+        card.handleDeleteCard();
         cardDeletePopup.close();
       })
       .catch((err) => {
