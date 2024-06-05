@@ -17,10 +17,12 @@ export default class UserInfo {
     this._descriptionElement.textContent = description;
     this._avatarElement.src = avatar;
   }
-  // updateAvatar() {
-  //   return this._avatarElement;
-  // }
+
   setAvatar({ avatar }) {
     this._avatarElement.src = avatar;
+  }
+
+  updateAvatar(newAvatarUrl) {
+    this._avatarElement.src = newAvatarUrl;
   }
 }

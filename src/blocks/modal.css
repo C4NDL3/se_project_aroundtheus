@@ -196,4 +196,9 @@
     margin-top: 15px;
     font-size: 14px;
   }
+
+  #delete-card-modal .modal__container {
+    min-width: 32px;
+    /* padding: 24px; */
+  }
 }

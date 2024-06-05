@@ -127,6 +127,9 @@ function handleAddImageSubmit(name, url) {
     });
 }
 
+const newAvatarUrl = "https://some-url.com";
+handleAvatarSubmit(newAvatarUrl);
+
 function handleAvatarSubmit(url) {
   profileAvatarPopup.setLoading(true);
   api
@@ -165,7 +168,7 @@ function handleDeleteCard(card) {
 function handleLike(cardId) {
   if (cardId._isLiked) {
     api
-      .dislikeCard(cardId._id)
+      .dislikeCard(cardId.id)
       .then(() => {
         cardId.handleLikeIcon();
         cardId._isLiked = false;
@@ -176,7 +179,7 @@ function handleLike(cardId) {
   }
   if (!cardId._isLiked) {
     api
-      .likeCard(cardId._id)
+      .likeCard(cardId.id)
       .then(() => {
         cardId.handleLikeIcon();
         cardId._isLiked = true;
