@@ -1,5 +1,5 @@
 import Api from "../components/Api.js";
-import Card from "../components/card.js";
+import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import "./index.css";
 import Popup from "../components/Popup.js";
@@ -78,6 +78,12 @@ const userInfo = new UserInfo({
   avatarSelector: ".profile__image",
 });
 
+const profileAvatarPopup = new PopupWithForm(
+  "#profile-avatar-modal",
+  handleAvatarSubmit,
+  profileAvatarButton
+);
+
 // Function to handle click event
 function handleImageClick({ name, link }) {
   popupWithImage.open(name, link);
@@ -126,9 +132,6 @@ function handleAddImageSubmit(name, url) {
       addCardPopup.setLoading(false);
     });
 }
-
-const newAvatarUrl = "https://some-url.com";
-handleAvatarSubmit(newAvatarUrl);
 
 function handleAvatarSubmit(url) {
   profileAvatarPopup.setLoading(true);
@@ -201,12 +204,6 @@ const addCardFormValidator = new FormValidator(config, addCardForm);
 addCardFormValidator.enableValidation();
 
 // Popup with form
-
-const profileAvatarPopup = new PopupWithForm(
-  "#profile-avatar-modal",
-  handleAvatarSubmit,
-  profileAvatarButton
-);
 
 profileAvatarButton.addEventListener("click", () => {
   profileAvatarPopup.open();
