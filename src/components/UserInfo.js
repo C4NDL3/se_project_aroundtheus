@@ -20,9 +20,9 @@ export default class UserInfo {
     }
   }
 
-  setAvatar({ avatar }) {
-    this._avatarElement.src = avatar;
-  }
+  // setAvatar({ avatar }) {
+  //   this._avatarElement.src = avatar;
+  // }
 
   // updateAvatar(newAvatarUrl) {
   //   this._avatarElement.src = newAvatarUrl;

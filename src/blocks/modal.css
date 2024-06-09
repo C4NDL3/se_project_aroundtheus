@@ -153,11 +153,9 @@
 
 #delete-card-modal .modal__container {
   min-width: 430px;
-  max-height: 181px;
   margin-top: 270px;
   padding: 34px;
-  display: flex;
-  align-items: center;
+  height: 141px;
 }
 
 #delete-card-modal .modal__button {
@@ -165,6 +163,12 @@
   min-height: 46px;
   padding: 0;
   margin: 0;
+}
+
+#profile-avatar-modal .modal__container {
+  width: 430px;
+  height: 272px;
+  border: 1px #000;
 }
 
 @media screen and (max-width: 680px) and (min-width: 320px) {

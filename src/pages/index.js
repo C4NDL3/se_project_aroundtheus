@@ -138,7 +138,7 @@ function handleAvatarSubmit(url) {
   api
     .updateAvatar(url)
     .then((userData) => {
-      userInfo.setAvatar(userData);
+      userInfo.setUserInfo(userData);
       profileAvatarPopup.close();
     })
     .catch((err) => {
@@ -169,23 +169,23 @@ function handleDeleteCard(card) {
 }
 
 function handleLike(cardId) {
-  if (cardId._isLiked) {
+  if (cardId.isLiked) {
     api
       .dislikeCard(cardId.id)
       .then(() => {
         cardId.handleLikeIcon();
-        cardId._isLiked = false;
+        cardId.isLiked = false;
       })
       .catch((err) => {
         console.error(err);
       });
   }
-  if (!cardId._isLiked) {
+  if (!cardId.isLiked) {
     api
       .likeCard(cardId.id)
       .then(() => {
         cardId.handleLikeIcon();
-        cardId._isLiked = true;
+        cardId.isLiked = true;
       })
       .catch((err) => {
         console.error(err);
@@ -207,6 +207,7 @@ addCardFormValidator.enableValidation();
 
 profileAvatarButton.addEventListener("click", () => {
   profileAvatarPopup.open();
+  avatarFormValidator.resetValidation();
 });
 profileAvatarPopup.setEventListeners();
 
