@@ -138,7 +138,11 @@ function handleAvatarSubmit(url) {
   api
     .updateAvatar(url)
     .then((userData) => {
-      userInfo.setUserInfo(userData);
+      userInfo.setUserInfo({
+        name: userData.name,
+        description: userData.about,
+        avatar: userData.avatar,
+      });
       profileAvatarPopup.close();
     })
     .catch((err) => {
@@ -168,24 +172,24 @@ function handleDeleteCard(card) {
   });
 }
 
-function handleLike(cardId) {
-  if (cardId.isLiked) {
+function handleLike(cardInstance) {
+  if (cardInstance.isLiked) {
     api
-      .dislikeCard(cardId.id)
+      .dislikeCard(cardInstance.id)
       .then(() => {
-        cardId.handleLikeIcon();
-        cardId.isLiked = false;
+        cardInstance.handleLikeIcon();
+        cardInstance.isLiked = false;
       })
       .catch((err) => {
         console.error(err);
       });
   }
-  if (!cardId.isLiked) {
+  if (!cardInstance.isLiked) {
     api
-      .likeCard(cardId.id)
+      .likeCard(cardInstance.id)
       .then(() => {
-        cardId.handleLikeIcon();
-        cardId.isLiked = true;
+        cardInstance.handleLikeIcon();
+        cardInstance.isLiked = true;
       })
       .catch((err) => {
         console.error(err);
