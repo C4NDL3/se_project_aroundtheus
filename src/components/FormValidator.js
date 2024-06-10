@@ -16,11 +16,24 @@ export default class FormValidator {
     errorMessageEl.classList.add(this._errorClass);
   }
 
+  // _hideInputError(inputEl) {
+  //   const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
+  //   inputEl.classList.remove(this._inputErrorClass);
+  //   errorMessageEl.classList.remove(this._errorClass);
+  //   errorMessageEl.textContent = "";
+  // }
+
   _hideInputError(inputEl) {
     const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
-    inputEl.classList.remove(this._inputErrorClass);
-    errorMessageEl.textContent = "";
-    errorMessageEl.classList.remove(this._errorClass);
+    if (errorMessageEl) {
+      inputEl.classList.remove(this._inputErrorClass);
+      errorMessageEl.textContent = "";
+      errorMessageEl.classList.remove(this._errorClass);
+    } else {
+      console.error(
+        `Error message element not found for input ID: ${inputEl.id}`
+      );
+    }
   }
 
   _hasInvalidInput(inputEls) {
@@ -59,7 +72,9 @@ export default class FormValidator {
   _checkInputValidity(formEl, inputEl) {
     if (!inputEl.validity.valid) {
       this._showInputError(inputEl);
-    } else this._hideInputError(inputEl);
+    } else {
+      this._hideInputError(inputEl);
+    }
   }
 
   enableValidation() {

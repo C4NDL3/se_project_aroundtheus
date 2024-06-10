@@ -6,7 +6,7 @@ export default class Section {
   }
 
   renderItems() {
-    this._items.forEach((data) => {
+    this._items.reverse().forEach((data) => {
       this._renderer(data);
     });
   }
@@ -15,3 +15,4 @@ export default class Section {
     this._container.prepend(Element);
   }
 }
+

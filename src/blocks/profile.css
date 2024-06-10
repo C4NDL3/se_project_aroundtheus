@@ -74,6 +74,37 @@
   border-radius: 50%;
   margin-right: 30px;
   background-position: center;
+  object-fit: cover;
+}
+
+/* .profile__image:hover {
+  opacity: 0.6;
+} */
+
+.profile__avatar-container {
+  position: relative;
+}
+
+/* .profile__avatar-container:hover {
+  opacity: 0.6;
+} */
+
+.profile__avatar-button {
+  background: transparent url(../images/edit-avatar.svg) center no-repeat;
+  border: none;
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  top: 50px;
+  left: 48px;
+  cursor: pointer;
+  opacity: 0;
+  background-size: cover;
+  transition: 0.3s ease-in-out;
+}
+
+.profile__avatar-button:hover {
+  opacity: 0.6;
 }
 
 @media screen and (min-width: 320px) and (max-width: 620px) {

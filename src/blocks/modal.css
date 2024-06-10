@@ -151,6 +151,26 @@
   border-bottom-color: #f00;
 }
 
+#delete-card-modal .modal__container {
+  min-width: 430px;
+  margin-top: 270px;
+  padding: 34px;
+  height: 141px;
+}
+
+#delete-card-modal .modal__button {
+  width: 100%;
+  min-height: 46px;
+  padding: 0;
+  margin: 0;
+}
+
+#profile-avatar-modal .modal__container {
+  width: 430px;
+  height: 272px;
+  border: 1px #000;
+}
+
 @media screen and (max-width: 680px) and (min-width: 320px) {
   .modal__container {
     width: 282px;
@@ -179,5 +199,10 @@
     height: 46px;
     margin-top: 15px;
     font-size: 14px;
+  }
+
+  #delete-card-modal .modal__container {
+    min-width: 32px;
+    /* padding: 24px; */
   }
 }
